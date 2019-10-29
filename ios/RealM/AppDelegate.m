@@ -21,7 +21,7 @@
                                             initialProperties:nil];
 
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
-
+  [self removeImage:@"123"];
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
@@ -29,7 +29,12 @@
   [self.window makeKeyAndVisible];
   return YES;
 }
-
+- (void)removeImage:(NSString *)filename
+{
+  NSFileManager *fileManager = [NSFileManager defaultManager];
+  NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+  NSLog(@"the path is %@",documentsPath);
+}
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
 #if DEBUG
